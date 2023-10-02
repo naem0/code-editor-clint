@@ -31,11 +31,13 @@ footer a {
 .mainLabel {
   margin-bottom: 20px;
   margin-top: 0;
+  font-size: 18px;
 }
 
 .homePageLogo {
-  height: 80px;
-  margin-bottom: 30px;
+  height: 2rem;
+
+  margin: 20px 0px;
 }
 
 .inputBox {
@@ -51,6 +53,7 @@ footer a {
 
 .btn {
   border: none;
+  color: white;
   padding: 10px;
   border-radius: 5px;
   font-size: 16px;
@@ -62,8 +65,11 @@ footer a {
 .joinBtn,
 .leaveBtn {
   background: #4aed88;
-  width: 100px;
+  padding: 10px 20px;
   margin-left: auto;
+}
+.copyBtn{
+  color: black;
 }
 
 .joinBtn:hover,
@@ -72,8 +78,8 @@ footer a {
 }
 
 .createInfo {
-  margin: 0 auto;
-  margin-top: 20px;
+  margin:20px 0px 10px;
+  font-size: 18px;
 }
 
 .createNewBtn {
@@ -81,6 +87,7 @@ footer a {
   text-decoration: none;
   border-bottom: 1px solid #4aed88;
   transition: all 0.3s ease-in-out;
+  background: none;
 }
 
 .createNewBtn:hover,
@@ -104,22 +111,43 @@ footer a:hover {
 .asideInner {
   flex: 1;
 }
-
+.connected{
+  font-weight: bold;
+}
 .clientsList {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .client {
   display: flex;
   align-items: center;
-  flex-direction: column;
   font-weight: bold;
+  gap: 8px;
+}
+.client-img-continar{
+  border-radius: 50%;
+  border: 2px solid #4aed88;
+  width: 40px;
+  height: 40px;
+}
+.client-img-continar img{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.client-email{
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
 }
 .userName {
-  margin-top: 10px;
+  margin: 0px;
+  margin-bottom: 2px;
 }
 
 .logo {
@@ -128,7 +156,8 @@ footer a:hover {
 }
 
 .logoImage {
-  height: 60px;
+  height: 30px;
+  margin: 10px 0px 8px;
 }
 
 .leaveBtn {
@@ -137,7 +166,24 @@ footer a:hover {
 }
 .CodeMirror {
   min-height: calc(100vh - 20px);
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 1.6;
   padding-top: 20px;
+}
+
+.google-login {
+  width: 70%;
+  margin: 0px auto;
+}
+.google-login img {
+  width: 100%;
+  border-radius: 10px;
+}
+.or{
+  text-align: center;
+  color: gray;
+}
+.or samp{
+  margin-bottom: -2px;
+  color: #fff;
 }

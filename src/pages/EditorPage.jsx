@@ -4,19 +4,17 @@ import toast from 'react-hot-toast';
 import Editor from '../components/Editor';
 import { initSocket } from '../socket';
 import {
-    useLocation,
     useNavigate,
-    Navigate,
     useParams,
     useLoaderData,
 } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import Client from '../components/Client';
+import logo from "../assets/logo-3.svg";
 
 const EditorPage = () => {
     const socketRef = useRef(null);
     const codeRef = useRef(null);
-    const location = useLocation();
     const { roomId } = useParams();
     const reactNavigator = useNavigate();
     const [clients, setClients] = useState([]);
@@ -48,11 +46,12 @@ const EditorPage = () => {
             socketRef.current.on(
                 'JOINED',
                 ({ clients, username, socketId }) => {
-                    if (username !== location.state?.username) {
+                    if (username !== displayName) {
                         toast.success(`${username} joined the room.`);
                         console.log(`${username} joined`);
                     }
                     setClients(clients);
+                    console.log(clients)
                     socketRef.current.emit("SYNC_CODE", {
                         code: codeRef.current,
                         socketId,
@@ -96,9 +95,7 @@ const EditorPage = () => {
         reactNavigator('/');
     }
 
-    if (!location.state) {
-        return <Navigate to="/" />;
-    }
+    
 
     return (
         <div className="mainWrap">
@@ -107,18 +104,18 @@ const EditorPage = () => {
                     <div className="logo">
                         <img
                             className="logoImage"
-                            src="/code-sync.png"
+                            src={logo}
                             alt="logo"
                         />
                     </div>
-                    <h3>Connected</h3>
+                    <h3 className='connected'>Connected</h3>
                     <div className="clientsList">
                         {
                             clients && 
                             clients.map((client) => (
                                 <Client
                                     key={client.socketId}
-                                    username={client.username}
+                                    client={client}
                                 />
                             ))
                         }

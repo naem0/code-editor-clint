@@ -1,67 +1,55 @@
 import { useContext, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
+import logo from "../assets/logo-3.svg";
 
 const Home = () => {
     const navigate = useNavigate();
     const { user } = useContext(AuthContext)
 
     const [roomId, setRoomId] = useState('');
-    const [username, setUsername] = useState('');
-    const createNewRoom = (e) => {
-        e.preventDefault();
-        const id = uuidV4();
-        setRoomId(id);
-        toast.success('Created a new room');
+    
+    
+    const createNewRoom = () => {
+        setRoomId(uuidV4());
+        if (roomId) {
+            fetch('http://localhost:3000/room', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    code: "",
+                    roomId: roomId,
+                })
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    // Handle the response data if needed
+                    navigate(`/editor/${roomId}`);
+                    toast.success('Created a new room');
+                })
+                .catch((error) => {
+                    console.error('Fetch error:', error);
+                });
+        }
     };
 
-    
+
     const joinRoom = () => {
-        if (!roomId || !username) {
-            toast.error('ROOM ID & username is required');
+        if (!roomId) {
+            toast.error('ROOM ID required');
             return;
         }
-
-        // Redirect
-        
-        fetch('http://localhost:3000/room', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                code: "",
-                roomId: roomId,
-                mumber: [
-                    {
-                        name: username,
-                        email: user.email,
-                        photo: user.photoUrl,
-                        userTd: user.uid
-                    }
-                ]
-            })
-        })
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then((data) => {
-            // Handle the response data if needed
-            navigate(`/editor/${roomId}`, {
-                state: {
-                    username,
-                },
-            });
-        })
-        .catch((error) => {
-            console.error('Fetch error:', error);
-        });
+        navigate(`/editor/${roomId}`);
     };
 
     const handleInputEnter = (e) => {
@@ -74,8 +62,8 @@ const Home = () => {
             <div className="formWrapper">
                 <img
                     className="homePageLogo"
-                    src="/code-sync.png"
-                    alt="code-sync-logo"
+                    src={logo}
+                    alt="code-flow-logo"
                 />
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
                 <div className="inputGroup">
@@ -84,15 +72,6 @@ const Home = () => {
                         className="inputBox"
                         placeholder="ROOM ID"
                         onChange={(e) => setRoomId(e.target.value)}
-                        value={roomId}
-                        onKeyUp={handleInputEnter}
-                    />
-                    <input
-                        type="text"
-                        className="inputBox"
-                        placeholder="USERNAME"
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
                         onKeyUp={handleInputEnter}
                     />
                     <button className="btn joinBtn" onClick={joinRoom}>
@@ -100,14 +79,16 @@ const Home = () => {
                     </button>
                     <span className="createInfo">
                         If you don't have an invite then create &nbsp;
-                        <a
+                        <Link
                             onClick={createNewRoom}
-                            href=""
                             className="createNewBtn"
                         >
                             new room
-                        </a>
+                        </Link>
                     </span>
+                    <button className="btn joinBtn" onClick={createNewRoom}>
+                    Create new room
+                    </button>
                 </div>
             </div>
             <footer>

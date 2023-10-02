@@ -2,29 +2,39 @@ import { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
+import logo from "../assets/logo-3.svg";
 
 const Register = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const { createUser, googleSignIn } = useContext(AuthContext);
+    const { createUser, googleSignIn, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const photoURL = "";
 
     const hendelLoging = () => {
-         
+
         createUser(email, password)
             .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user)
-                if (user) {
-                    navigate('/')
-                }
-                // ...
+                updateUserProfile(username, photoURL)
+                    .then((updatUserCredential) => {
+                        // Signed in 
+                        toast.success('Registration Successful');
+                        navigate('/')
+                        console.log(updatUserCredential)
+                        
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        toast.error(errorMessage)
+                        console.log(error)
+                    });
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                toast.error(errorMessage)
                 console.log(error)
             });
     }
@@ -33,34 +43,34 @@ const Register = () => {
             <div className="formWrapper">
                 <img
                     className="homePageLogo"
-                    src="/code-sync.png"
-                    alt="code-sync-logo"
+                    src={logo}
+                    alt="code-flow-logo"
                 />
-                <h4 className="mainLabel">Paste invitation ROOM ID</h4>
+                <h4 className="mainLabel">Please sign in to join this webinar</h4>
                 <div className="inputGroup">
                     <input
                         type="text"
                         className="inputBox"
                         placeholder="USERNAME"
                         onChange={(e) => setUsername(e.target.value)}
-                        
+
                     />
                     <input
-                        type="text"
+                        type="email"
                         className="inputBox"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
-                        
+
                     />
                     <input
                         type="password"
                         className="inputBox"
                         placeholder="PASSWORD"
                         onChange={(e) => setPassword(e.target.value)}
-                        
+
                     />
                     <button className="btn joinBtn" onClick={hendelLoging}>
-                        Join
+                        Sign in
                     </button>
                     <span className="createInfo">
                         If you have an acount then please &nbsp;
