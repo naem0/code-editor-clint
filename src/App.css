@@ -182,6 +182,7 @@ footer a:hover {
 .or{
   text-align: center;
   color: gray;
+  margin-top: 0;
 }
 .or samp{
   margin-bottom: -2px;

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider";
 import logo from "../assets/logo-3.svg";
 import googleImg from "../assets/google.png"
+import Footer from "../components/Footer";
 
 const Loging = () => {
     const [password, setPassword] = useState('');
@@ -17,41 +18,41 @@ const Loging = () => {
             return;
         }
         signIn(email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user)
-            if (user) {
-                toast.success('Loging Successful')
-                navigate('/')
-            }
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-            console.log(error)
-        });
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                if (user) {
+                    toast.success('Loging Successful')
+                    navigate('/')
+                }
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+                console.log(error)
+            });
     }
-    const hendelGoogleLogin = ()=>{
+    const hendelGoogleLogin = () => {
         googleSignIn()
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user)
-            if (user) {
-                toast.success('Loging Successful')
-                navigate('/')
-            }
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-            console.log(error)
-        });
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                if (user) {
+                    toast.success('Loging Successful')
+                    navigate('/')
+                }
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+                console.log(error)
+            });
     }
     return (
         <div className="homePageWrapper">
@@ -80,9 +81,9 @@ const Loging = () => {
                     <button className="btn joinBtn" onClick={hendelLoging}>
                         Loging
                     </button>
-                    
+
                     <p className="or">____________________ <span> or </span> ____________________</p>
-                    <Link className="google-login" ><img onClick={hendelGoogleLogin}  src={googleImg} alt="" /></Link>
+                    <Link className="google-login" ><img onClick={hendelGoogleLogin} src={googleImg} alt="" /></Link>
                     <span className="createInfo">
                         If you don't have an acount then create &nbsp;
                         <Link
@@ -96,12 +97,7 @@ const Loging = () => {
                 </div>
 
             </div>
-            <footer>
-                <h4>
-                    Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/codersgyan">Coder's Gyan</a>
-                </h4>
-            </footer>
+            <Footer/>
         </div>
     );
 };

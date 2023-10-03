@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import logo from "../assets/logo-3.svg";
 import googleImg from "../assets/google.png"
+import Footer from '../components/Footer';
 
 const Register = () => {
     const [password, setPassword] = useState('');
@@ -23,7 +24,7 @@ const Register = () => {
                         toast.success('Registration Successful');
                         navigate('/')
                         console.log(updatUserCredential)
-                        
+
                     })
                     .catch((error) => {
                         const errorCode = error.code;
@@ -39,24 +40,24 @@ const Register = () => {
                 console.log(error)
             });
     }
-    const hendelGoogleLogin = ()=>{
+    const hendelGoogleLogin = () => {
         googleSignIn()
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user)
-            if (user) {
-                toast.success('Loging Successful')
-                navigate('/')
-            }
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            toast.error(errorMessage)
-            console.log(error)
-        });
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                if (user) {
+                    toast.success('Loging Successful')
+                    navigate('/')
+                }
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                toast.error(errorMessage)
+                console.log(error)
+            });
     }
     return (
         <div className="homePageWrapper">
@@ -73,27 +74,24 @@ const Register = () => {
                         className="inputBox"
                         placeholder="USERNAME"
                         onChange={(e) => setUsername(e.target.value)}
-
                     />
                     <input
                         type="email"
                         className="inputBox"
                         placeholder="Email"
                         onChange={(e) => setEmail(e.target.value)}
-
                     />
                     <input
                         type="password"
                         className="inputBox"
                         placeholder="PASSWORD"
                         onChange={(e) => setPassword(e.target.value)}
-
                     />
                     <button className="btn joinBtn" onClick={hendelLoging}>
                         Sign in
                     </button>
                     <p className="or">____________________ <span> or </span> ____________________</p>
-                    <Link className="google-login" ><img onClick={hendelGoogleLogin}  src={googleImg} alt="" /></Link>
+                    <Link className="google-login" ><img onClick={hendelGoogleLogin} src={googleImg} alt="" /></Link>
 
                     <span className="createInfo">
                         If you have an acount then please &nbsp;
@@ -107,12 +105,7 @@ const Register = () => {
                     </span>
                 </div>
             </div>
-            <footer>
-                <h4>
-                    Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/codersgyan">Coder's Gyan</a>
-                </h4>
-            </footer>
+            <Footer/>
         </div>
     );
 };

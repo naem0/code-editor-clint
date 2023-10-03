@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import logo from "../assets/logo-3.svg";
+import Footer from '../components/Footer';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -91,12 +92,7 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            <footer>
-                <h4>
-                    Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/codersgyan">Coder's Gyan</a>
-                </h4>
-            </footer>
+           <Footer/>
         </div>
     );
 };
