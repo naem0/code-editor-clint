@@ -57,11 +57,14 @@ const Loging = () => {
     return (
         <div className="homePageWrapper">
             <div className="formWrapper">
-                <img
-                    className="homePageLogo"
-                    src={logo}
-                    alt="code-flow-logo"
-                />
+            <div className="flex">
+                    <img
+                        className="homePageLogo"
+                        src={logo}
+                        alt="code-flow-logo"
+                    />
+                    <h2>Log-in</h2>
+                </div>
                 <h4 className="mainLabel">Please login to your account</h4>
                 <div className="inputGroup">
                     <input

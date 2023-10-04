@@ -12,6 +12,7 @@
   border-radius: 10px;
   width: 400px;
   max-width: 90%;
+  box-shadow: 1px 1px 5px 2px rgb(21, 21, 21);
 }
 
 footer {
@@ -68,6 +69,10 @@ footer a {
   padding: 10px 20px;
   margin-left: auto;
 }
+.delet-btn{
+  background: #282a36;
+  color: wheat;
+}
 .copyBtn{
   color: black;
 }
@@ -100,6 +105,10 @@ footer a:hover {
   display: grid;
   grid-template-columns: 230px 1fr;
 }
+.mainWrap-home {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
 
 .aside {
   background: #1c1e29;
@@ -107,6 +116,7 @@ footer a:hover {
   color: #fff;
   display: flex;
   flex-direction: column;
+  box-shadow: 1px 1px 5px 2px rgb(21, 21, 21);
 }
 .asideInner {
   flex: 1;
@@ -126,7 +136,16 @@ footer a:hover {
   display: flex;
   align-items: center;
   font-weight: bold;
-  gap: 8px;
+  gap: 4px;
+  text-decoration: none;
+  color: #fff;
+}
+.my-room{
+  width: 100%;
+}
+.my-room :hover{
+ background: #1c1e29;
+ opacity: 80%;
 }
 .client-img-continar{
   border-radius: 50%;
@@ -134,20 +153,24 @@ footer a:hover {
   width: 40px;
   height: 40px;
 }
-.client-img-continar img{
+.client-img{
   border-radius: 50%;
   width: 40px;
   height: 40px;
 }
 
 .client-email{
-  font-size: 12px;
+  font-size: 11px;
   font-weight: normal;
   margin: 0;
 }
 .userName {
   margin: 0px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+.time{
+  font-size: x-small;
 }
 
 .logo {
@@ -187,4 +210,33 @@ footer a:hover {
 .or samp{
   margin-bottom: -2px;
   color: #fff;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.my-room-img{
+  width: 70%; 
+  margin: 6px;
+}
+.home-aside-bg{
+  background-color: #282a36;
+}
+.user-profile{
+  text-align: center;
+  border-bottom: 2px solid #424242;
+}
+.user-profile img{
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: 3px solid #4aed88;
+}
+.user-profile h3{
+ margin: 0px;
+}
+.user-profile p{
+ margin: 0px;
+ margin-bottom: 12px;
 }

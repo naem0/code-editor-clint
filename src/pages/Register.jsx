@@ -62,11 +62,14 @@ const Register = () => {
     return (
         <div className="homePageWrapper">
             <div className="formWrapper">
-                <img
-                    className="homePageLogo"
-                    src={logo}
-                    alt="code-flow-logo"
-                />
+                <div className="flex">
+                    <img
+                        className="homePageLogo"
+                        src={logo}
+                        alt="code-flow-logo"
+                    />
+                    <h2>Sign-in</h2>
+                </div>
                 <h4 className="mainLabel">Please sign in to join this webinar</h4>
                 <div className="inputGroup">
                     <input
@@ -105,7 +108,7 @@ const Register = () => {
                     </span>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
