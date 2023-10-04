@@ -3,11 +3,28 @@ import { AuthContext } from "../AuthProvider";
 import MyRoom from "./MyRoom";
 import photo from "../../public/user1.png"
 import { FaSignOutAlt } from "react-icons/fa";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const HomeAsid = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [datas, setDatas] = useState([]);
+    const navigate = useNavigate();
     const { email, photoURL, displayName } = user;
+    const hendelLogOut =() =>{
+        logOut()
+        .then((user) => {
+                toast.success('Logout Successful')
+                // navigate("/loging")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            toast.error(errorMessage)
+            console.log(error)
+        });
+    }
 
     // Function to fetch my rooms
     const fetchMyRooms = () => {
@@ -57,8 +74,7 @@ const HomeAsid = () => {
         <div className="aside home-aside-bg">
             <div className="asideInner">
                 <div className="user-profile">
-                    <div className="">
-                        
+                    <div onClick={hendelLogOut} className="logout btn">
                         <p title="Logout"><FaSignOutAlt/></p>
                     </div>
                     <img

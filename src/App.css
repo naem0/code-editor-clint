@@ -109,7 +109,17 @@ footer a:hover {
   display: grid;
   grid-template-columns: 280px 1fr;
 }
-
+@media screen and (max-width: 800px) {
+  .mainWrap-home {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 32px ;
+  }
+  .homePageWrapper{
+    height: 100%;
+  }
+}
 .aside {
   background: #1c1e29;
   padding: 16px;
@@ -226,6 +236,7 @@ footer a:hover {
 .user-profile{
   text-align: center;
   border-bottom: 2px solid #424242;
+  position: relative;
 }
 .user-profile img{
   width: 4rem;
@@ -239,4 +250,21 @@ footer a:hover {
 .user-profile p{
  margin: 0px;
  margin-bottom: 12px;
+ font-size: 12px;
+}
+.logout{
+  position: absolute;
+  left: 4px;
+  top: 1rem;
+  padding: 4px;
+  border-radius: 4px;
+}
+.logout :hover{
+  background-color: #1c1e29;
+  padding: 4px;
+  border-radius: 5px;
+}
+.logout p{
+  font-size: larger;
+  color: #4aed88;
 }
