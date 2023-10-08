@@ -1,6 +1,4 @@
-// import Avatar from 'react-avatar';
-import moment from "moment/moment";
-import photo from "../../public/user1.png"
+import photo from "../assets/user1.png"
 
 
 const Client = ({ client }) => {

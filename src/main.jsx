@@ -13,13 +13,14 @@ import Register from './pages/Register.jsx';
 import EditorPage from './pages/EditorPage.jsx';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './AuthProvider';
+import Errorpage from './pages/ErrorPage/Errorpage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <PrivateRoute><Home /></PrivateRoute>,
-    errorElement: <h1>Error</h1>,
+    errorElement: <Errorpage/>,
   },
   {
     path: "/loging",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
   {
     path: "/editor/:roomId",
     element: <PrivateRoute><EditorPage /></PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:3000/room/${params.roomId}`)
+    loader: ({ params }) => fetch(`https://code-editor-server-cba3.onrender.com/room/${params.roomId}`)
   }
 
 ]);

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider";
 import MyRoom from "./MyRoom";
-import photo from "../../public/user1.png"
+import photo from "../assets/user1.png"
 import { FaSignOutAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ const HomeAsid = () => {
 
     // Function to fetch my rooms
     const fetchMyRooms = () => {
-        fetch(`http://localhost:3000/myrooms/${email}`)
+        fetch(`https://code-editor-server-cba3.onrender.com/myrooms/${email}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -51,7 +51,7 @@ const HomeAsid = () => {
     // Function to delete a member from a room
     const handleDeleteMember = async (roomId, email) => {
         try {
-            const response = await fetch(`http://localhost:3000/room/${roomId}/member/${email}`, {
+            const response = await fetch(`https://code-editor-server-cba3.onrender.com/room/${roomId}/member/${email}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

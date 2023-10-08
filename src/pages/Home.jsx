@@ -13,7 +13,7 @@ const Home = () => {
     const createNewRoom = () => {
         setRoomId(shortid.generate());
         if (roomId) {
-            fetch('http://localhost:3000/room', {
+            fetch('https://code-editor-server-cba3.onrender.com/room', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
