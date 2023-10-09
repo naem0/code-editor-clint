@@ -9,16 +9,19 @@ import Footer from '../components/Footer';
 const Register = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
+    const [userName, setUsername] = useState('');
     const { createUser, googleSignIn, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const photoURL = "";
 
-    const hendelLoging = () => {
-
+    const hendelSining = () => {
+        if (!password || !email || !userName) {
+            toast.error('Name & Email & Password is required');
+            return;
+        }
         createUser(email, password)
             .then((userCredential) => {
-                updateUserProfile(username, photoURL)
+                updateUserProfile(userName, photoURL)
                     .then((updatUserCredential) => {
                         // Signed in 
                         toast.success('Registration Successful');
@@ -76,21 +79,24 @@ const Register = () => {
                         type="text"
                         className="inputBox"
                         placeholder="USERNAME"
+                        required
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <input
                         type="email"
                         className="inputBox"
                         placeholder="Email"
+                        required
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         type="password"
                         className="inputBox"
                         placeholder="PASSWORD"
+                        required
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className="btn joinBtn" onClick={hendelLoging}>
+                    <button className="btn joinBtn" onClick={hendelSining}>
                         Sign in
                     </button>
                     <p className="or">____________________ <span> or </span> ____________________</p>

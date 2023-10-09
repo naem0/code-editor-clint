@@ -31,7 +31,7 @@ const Loging = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                toast.error(errorMessage)
+                toast.error('Authentication failed, Please enter valid email or password')
                 console.log(error)
             });
     }
@@ -48,9 +48,10 @@ const Loging = () => {
                 // ...
             })
             .catch((error) => {
+
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                toast.error(errorMessage)
+                toast.error("Authentication Failed, Please Try Again")
                 console.log(error)
             });
     }
@@ -75,7 +76,7 @@ const Loging = () => {
 
                     />
                     <input
-                        type="text"
+                        type="password"
                         className="inputBox"
                         placeholder="PASSWORD"
                         onChange={(e) => setPassword(e.target.value)}

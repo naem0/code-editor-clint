@@ -141,7 +141,7 @@
 .box .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-left {
     width: 12px;
     height: 12px;
-    background: #282a36;
+    background: #1c1e29;
     border-radius: 50%;
     margin: 0 10px;
     position: absolute;
@@ -150,7 +150,7 @@
 .box .box__ghost .box__ghost-container .box__ghost-eyes .box__eye-right {
     width: 12px;
     height: 12px;
-    background: #282a36;
+    background: #1c1e29;
     border-radius: 50%;
     margin: 0 10px;
     position: absolute;
@@ -202,13 +202,14 @@
 }
 .box .box__description .box__description-container .box__description-title h2{
     margin: 0;
+    letter-spacing: 2px;
 }
 .box .box__description .box__description-container .box__description-text {
     color: #8c8aa7;
     line-height: 20px;
     margin-top: 20px;
 }
-.box .box__description .box__button {
+.box__button {
     width: 80px;
     margin: auto;
     display: block;
@@ -229,7 +230,7 @@
     overflow: hidden;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
-.box .box__description .box__button:before {
+.box__button:before {
     content: '';
     position: absolute;
     width: 20px;
@@ -241,11 +242,11 @@
     transform: translateX(-50px) rotate(45deg);
     transition: transform 0.5s ease;
 }
-.box .box__description .box__button:hover {
+ .box__button:hover{
     background: transparent;
     border-color: #fff;
 }
-.box .box__description .box__button:hover:before {
+.box__button:hover:before {
     transform: translateX(250px) rotate(45deg);
 }
 @keyframes upndown {

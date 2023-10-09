@@ -40,6 +40,7 @@ const HomeAsid = () => {
             })
             .catch((error) => {
                 console.error('Fetch error:', error);
+                toast.error("Server Error, Try Again");
             });
     };
 
@@ -61,12 +62,15 @@ const HomeAsid = () => {
             if (response.status === 200) {
                 // Member deletion was successful, so fetch the rooms again
                 fetchMyRooms();
+                toast.success('Member deleted successfully')
                 console.log('Member deleted successfully');
             } else {
                 console.error('Failed to delete member');
+                toast.error('Failed to delete member')
             }
         } catch (error) {
             console.error('Error:', error);
+            toast.error('Failed to delete member')
         }
     };
 

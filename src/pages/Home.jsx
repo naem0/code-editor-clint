@@ -8,10 +8,12 @@ import shortid from 'shortid';
 
 const Home = () => {
     const navigate = useNavigate();
+    const id = shortid.generate();
+    const [roomId, setRoomId] = useState(id);
+    
 
-    const [roomId, setRoomId] = useState('');
     const createNewRoom = () => {
-        setRoomId(shortid.generate());
+        setRoomId(id);
         if (roomId) {
             fetch('https://code-editor-server-cba3.onrender.com/room', {
                 method: 'POST',
@@ -23,7 +25,7 @@ const Home = () => {
                     code: "",
                     roomId: roomId,
                     created: new Date(),
-                    modifi : new Date()
+                    modifi: new Date()
                 })
             })
                 .then((response) => {
@@ -39,6 +41,7 @@ const Home = () => {
                 })
                 .catch((error) => {
                     console.error('Fetch error:', error);
+                    toast.error("Server Error, Try Again");
                 });
         }
     };

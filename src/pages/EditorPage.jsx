@@ -7,6 +7,7 @@ import {
     useNavigate,
     useParams,
     useLoaderData,
+    Link,
 } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
 import Client from '../components/Client';
@@ -18,8 +19,8 @@ const EditorPage = () => {
     const { roomId } = useParams();
     const reactNavigator = useNavigate();
     const [clients, setClients] = useState([]);
-    const {user}= useContext(AuthContext);
-    const {email, displayName, photoURL} = user
+    const { user } = useContext(AuthContext);
+    const { email, displayName, photoURL } = user
     const data = useLoaderData()
 
     useEffect(() => {
@@ -76,8 +77,8 @@ const EditorPage = () => {
         init();
         return () => {
             socketRef.current.disconnect();
-            // socketRef.current.off("JOINED");
-            // socketRef.current.off("DISCONNECTED");
+            socketRef.current.off("JOINED");
+            socketRef.current.off("DISCONNECTED");
         };
     }, []);
 
@@ -95,23 +96,25 @@ const EditorPage = () => {
         reactNavigator('/');
     }
 
-    
+
 
     return (
         <div className="mainWrap">
             <div className="aside">
                 <div className="asideInner">
                     <div className="logo">
-                        <img
-                            className="logoImage"
-                            src={logo}
-                            alt="logo"
-                        />
+                        <Link to={"/"}>
+                            <img
+                                className="logoImage"
+                                src={logo}
+                                alt="logo"
+                            />
+                        </Link>
                     </div>
                     <h3 className='connected'>Connected</h3>
                     <div className="clientsList">
                         {
-                            clients && 
+                            clients &&
                             clients.map((client) => (
                                 <Client
                                     key={client.socketId}
@@ -119,7 +122,7 @@ const EditorPage = () => {
                                 />
                             ))
                         }
-                        
+
                     </div>
                 </div>
                 <button className="btn copyBtn" onClick={copyRoomId}>
@@ -133,7 +136,7 @@ const EditorPage = () => {
                 <Editor
                     socketRef={socketRef}
                     roomId={roomId}
-                    data = {data}
+                    data={data}
                     onCodeChange={(code) => {
                         codeRef.current = code;
                     }}
