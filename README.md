@@ -8,6 +8,34 @@ _Codeflow is a collaborative online code editor to share code in real-time with 
 
 <br/>
 
+## Demo:
+
+### Landing Page:
+![](./src/assets/Screenshot%20(44).png)
+
+### Live Sync
+![](./src/assets/Screenshot%20(43).png)
+
+<br/>
+
+
+## Features:
+* Supported Languages: 
+    * C/C++
+    * Python
+    * JavaScript
+* Real Time Collaboration despite network latency
+* Sharing is as simple as sharing a link
+* Pick up from where you left off
+* Backup all the files you have been working on
+* Dark Theme
+* Sublime Text Key binds integrated
+* Responsive Design suitable for Desktop, Tablets and Mobile
+
+<br/>
+<br/>
+
+
 ### Tech Stack ###
   **Frontend**
   * React
@@ -24,30 +52,6 @@ _Codeflow is a collaborative online code editor to share code in real-time with 
 
 <br/>
 
-## Features:
-* Supported Languages: 
-    * C/C++
-    * Python
-    * JavaScript
-* Real Time Collaboration despite network latency
-* Sharing is as simple as sharing a link
-* Pick up from where you left off
-* Backup all the files you have been working on
-* Dark Theme
-* Sublime Text Key binds integrated
-* Responsive Design suitable for Desktop, Tablets and Mobile
-
-
-<br/>
-<br/>
 
 - - - -
 
-
-## Demo:
-
-### Landing Page:
-![](./src/assets/Screenshot%20(44).png)
-
-### Live Sync
-![](./src/assets/Screenshot%20(43).png)
