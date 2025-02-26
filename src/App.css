@@ -46,10 +46,9 @@ footer a {
   border-radius: 5px;
   outline: none;
   border: none;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   background: #eee;
-  font-size: 16px;
-  font-weight: bold;
+  color: #1c1e29;
 }
 
 .btn {
@@ -57,7 +56,6 @@ footer a {
   color: white;
   padding: 10px;
   border-radius: 5px;
-  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
