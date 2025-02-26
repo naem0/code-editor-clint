@@ -34,7 +34,7 @@ const Home = () => {
                     }
                     return response.json();
                 })
-                .then((data) => {
+                .then(() => {
                     // Handle the response data if needed
                     navigate(`/editor/${roomId}`);
                     toast.success('Created a new room');
@@ -49,7 +49,7 @@ const Home = () => {
 
     const joinRoom = () => {
         if (!roomId) {
-            toast.error('ROOM ID required');
+            toast.error('Please enter a room ID');
             return;
         }
         navigate(`/editor/${roomId}`);
@@ -83,7 +83,7 @@ const Home = () => {
                             Join
                         </button>
                         <span className="createInfo">
-                            If you don't have an invite then create &nbsp;
+                            If you don&apos;t have an invite then create &nbsp;
                             <Link
                                 onClick={createNewRoom}
                                 className="createNewBtn"
@@ -91,9 +91,6 @@ const Home = () => {
                                 new room
                             </Link>
                         </span>
-                        <button className="btn joinBtn" onClick={createNewRoom}>
-                            Create new room
-                        </button>
                     </div>
                 </div>
                 <Footer />

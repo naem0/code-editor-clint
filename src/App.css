@@ -57,7 +57,7 @@ footer a {
   color: white;
   padding: 10px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -67,7 +67,6 @@ footer a {
 .leaveBtn {
   background: #4aed88;
   padding: 10px 20px;
-  margin-left: auto;
 }
 .delet-btn{
   background: #282a36;
@@ -104,29 +103,23 @@ footer a:hover {
 .mainWrap {
   display: grid;
   grid-template-columns: 230px 1fr;
+  height: calc(100vh - 32px);
 }
 .mainWrap-home {
   display: grid;
   grid-template-columns: 280px 1fr;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 767px) {
   .mainWrap-home {
     grid-template-columns: 1fr;
     display: flex;
     flex-direction: column-reverse;
     gap: 32px ;
   }
-  .homePageWrapper{
-    height: 100%;
+  .mainWrap {
+    grid-template-columns: 80px 1fr;
   }
-}
-.aside {
-  background: #1c1e29;
-  padding: 16px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 1px 1px 5px 2px rgb(21, 21, 21);
 }
 .asideInner {
   flex: 1;
@@ -194,11 +187,15 @@ footer a:hover {
 }
 
 .leaveBtn {
-  width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
+  text-decoration: none;
+  text-align: center;
+}
+.editorWrap{
+  height: 100%;
 }
 .CodeMirror {
-  min-height: calc(100vh - 20px);
+  height: 100% !important;
   font-size: 1rem;
   line-height: 1.6;
   padding-top: 20px;
@@ -335,3 +332,32 @@ footer a:hover {
 	}
 }
  
+.aside {
+  background: #1c1e29;
+  color: #fff;
+  padding: 16px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.desktop-aside {
+  display: none;
+  height: 100%;
+}
+.mobile-aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+ .desktop-aside {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  }
+  .mobile-aside {
+    display: none;
+  }
+}
+

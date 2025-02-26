@@ -10,8 +10,7 @@ import {
     Link,
 } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider';
-import Client from '../components/Client';
-import logo from "../assets/logo-3.svg";
+import EditorAside from '../components/EditorAside';
 
 const EditorPage = () => {
     const socketRef = useRef(null);
@@ -82,56 +81,12 @@ const EditorPage = () => {
         };
     }, []);
 
-    async function copyRoomId() {
-        try {
-            await navigator.clipboard.writeText(roomId);
-            toast.success('Room ID has been copied to your clipboard');
-        } catch (err) {
-            toast.error('Could not copy the Room ID');
-            console.error(err);
-        }
-    }
-
-    function leaveRoom() {
-        reactNavigator('/');
-    }
-
-
+    console.log(clients);
+    
 
     return (
         <div className="mainWrap">
-            <div className="aside">
-                <div className="asideInner">
-                    <div className="logo">
-                        <Link to={"/"}>
-                            <img
-                                className="logoImage"
-                                src={logo}
-                                alt="logo"
-                            />
-                        </Link>
-                    </div>
-                    <h3 className='connected'>Connected</h3>
-                    <div className="clientsList">
-                        {
-                            clients &&
-                            clients.map((client) => (
-                                <Client
-                                    key={client.socketId}
-                                    client={client}
-                                />
-                            ))
-                        }
-
-                    </div>
-                </div>
-                <button className="btn copyBtn" onClick={copyRoomId}>
-                    Copy ROOM ID
-                </button>
-                <button className="btn leaveBtn" onClick={leaveRoom}>
-                    Leave
-                </button>
-            </div>
+            <EditorAside clients={clients} roomId={roomId}/>
             <div className="editorWrap">
                 <Editor
                     socketRef={socketRef}

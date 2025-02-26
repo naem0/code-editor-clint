@@ -29,8 +29,6 @@ const Loging = () => {
                 // ...
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
                 toast.error('Authentication failed, Please enter valid email or password')
                 console.log(error)
             });
@@ -48,9 +46,6 @@ const Loging = () => {
                 // ...
             })
             .catch((error) => {
-
-                const errorCode = error.code;
-                const errorMessage = error.message;
                 toast.error("Authentication Failed, Please Try Again")
                 console.log(error)
             });
@@ -89,7 +84,7 @@ const Loging = () => {
                     <p className="or">____________________ <span> or </span> ____________________</p>
                     <Link className="google-login" ><img onClick={hendelGoogleLogin} src={googleImg} alt="" /></Link>
                     <span className="createInfo">
-                        If you don't have an acount then create &nbsp;
+                        If you don&apos;t have an acount then create &nbsp;
                         <Link
                             to={"/register"}
                             href=""
